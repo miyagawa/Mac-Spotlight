@@ -1,5 +1,10 @@
 Revision history for Perl extension Mac::Spotlight::MDQuery.
 
+0.02  Wed Jul 22 11:11:33 PDT 2009
+        - Make this module compile on Mac OS X 10.5
+        - Fixed kMDItemPath attribute bug
+        - Module maint bit taken over by Tatsuhiko Miyagawa
+
 0.01  Tue Aug  2 16:48:36 2005
 	- original version; created by h2xs 1.23 with options
 		-x -A -b5.8.0 -n Mac::Spotlight::MDQuery /Developer/SDKs/MacOSX10.4.0.sdk/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Headers/MDQuery.h

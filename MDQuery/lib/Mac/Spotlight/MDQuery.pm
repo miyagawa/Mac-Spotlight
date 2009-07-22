@@ -81,31 +81,30 @@ Mac::Spotlight::MDQuery - Make a query into OS X Spotlight
 
 =head1 SYNOPSIS
 
-use Mac::Spotlight::MDQuery ':constants';
-use Mac::Spotlight::MDItem ':constants';
+  use Mac::Spotlight::MDQuery ':constants';
+  use Mac::Spotlight::MDItem ':constants';
 
-$mdq = new Mac::Spotlight::MDQuery('kMDItemTitle == "*Battlestar*"c');
-$mdq->setScope(kMDQueryScopeComputer);
+  $mdq = new Mac::Spotlight::MDQuery('kMDItemTitle == "*Battlestar*"c');
+  $mdq->setScope(kMDQueryScopeComputer);
 
-$mdq->execute();
-$mdq->stop();
+  $mdq->execute();
+  $mdq->stop();
 
-@results = $mdq->getResults();
-foreach $r (@results) {
-  print $r->get(kMDItemTitle), "\n";
-  print $r->get(kMDItemKind), "\n";
+  @results = $mdq->getResults();
+  foreach $r (@results) {
+    print $r->get(kMDItemTitle), "\n";
+    print $r->get(kMDItemKind), "\n";
 
-  $listref = $r->get(kMDItemAuthors);
-  foreach $a (@$listref) {
-    print "$a\n";
+    $listref = $r->get(kMDItemAuthors);
+    foreach $a (@$listref) {
+      print "$a\n";
+    }
+
+    if ($r->get(kMDItemStreamable)) {
+      print "Content is streamable\n";
+    }
+    print scalar localtime($r->get(kMDItemContentCreationDate)), "\n";
   }
-
-  if ($r->get(kMDItemStreamable)) {
-    print "Content is streamable\n";
-  }
-  print scalar localtime($r->get(kMDItemContentCreationDate)), "\n";
-}
-
 
 =head1 DESCRIPTION
 
@@ -210,6 +209,8 @@ Mac::Spotlight::MDItem
 =head1 AUTHOR
 
 Adrian Hosey, E<lt>alh@warhound.orgE<gt>
+
+Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
