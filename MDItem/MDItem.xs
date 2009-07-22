@@ -1512,9 +1512,9 @@ PREINIT:
     const char* tmpptr;
 CODE:
     dMY_CXT;
-    tmpptr = CFStringGetCStringPtr(kMDItemFSSize, CFStringGetSystemEncoding());
+    tmpptr = CFStringGetCStringPtr(kMDItemPath, CFStringGetSystemEncoding());
     hv_store(MY_CXT.jumptable, tmpptr, strlen(tmpptr), newSViv((IV)_org_warhound_mdi_String2SV), 0);
-    RETVAL = kMDItemFSSize;
+    RETVAL = kMDItemPath;
 OUTPUT:
     RETVAL
 
