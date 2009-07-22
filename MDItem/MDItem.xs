@@ -4,9 +4,7 @@
 
 #include "ppport.h"
 
-#include </Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Headers/MDItem.h>
-
-
+#include </System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Headers/MDItem.h>
 
 #define MY_CXT_KEY "Mac::Spotlight::MDItem::_guts" XS_VERSION
 

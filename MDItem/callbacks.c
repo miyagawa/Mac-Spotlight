@@ -5,7 +5,7 @@
 #include "ppport.h"
 
 #include <CoreFoundation/CoreFoundation.h>
-#include </Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Headers/MDItem.h>
+#include </System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Headers/MDItem.h>
 
 SV* _org_warhound_mdi_String2SV(CFTypeRef attrItem) {
     SV* retval;
