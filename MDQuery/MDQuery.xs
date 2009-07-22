@@ -4,7 +4,7 @@
 
 #include "ppport.h"
 
-#include </Developer/SDKs/MacOSX10.4.0.sdk/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Headers/MDQuery.h>
+#include </Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Headers/MDQuery.h>
 
 
 MODULE = Mac::Spotlight::MDQuery		PACKAGE = Mac::Spotlight::MDQuery		
