@@ -1550,6 +1550,7 @@ CODE:
         RETVAL = newSV(0);
     else
         RETVAL = (*callback_ptr)(attrVal);
+    CFRelease(attrVal);
 OUTPUT:
     RETVAL
 
