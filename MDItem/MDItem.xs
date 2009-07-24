@@ -35,6 +35,14 @@ BOOT:
     MY_CXT.jumptable = newHV();
 }
 
+MDItemRef
+_new(path)
+    char* path
+CODE:
+    CFStringRef cpath = CFStringCreateWithCString(kCFAllocatorDefault, path, CFStringGetSystemEncoding());
+    RETVAL = MDItemCreate(kCFAllocatorDefault, cpath);
+OUTPUT:
+    RETVAL
 
 =item Common MD keys
 =cut

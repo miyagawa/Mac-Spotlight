@@ -134,6 +134,12 @@ our $VERSION = '0.01';
 require XSLoader;
 XSLoader::load('Mac::Spotlight::MDItem', $VERSION);
 
+sub new {
+    my ($class, $path) = @_;
+    my $mditem = _new($path) or return;
+    bless { mdiObj => $mditem }, $class;
+}
+
 sub get {
     my ($self, $attr) = @_;
     return _get($self->{mdiObj}, $attr);
@@ -150,21 +156,25 @@ Mac::Spotlight::MDItem - Examine the results of a Spotlight query
 
 =head1 SYNOPSIS
 
-  use Mac::Spotlight::MDQuery ':constants';
   use Mac::Spotlight::MDItem ':constants';
 
-  $mdq = new Mac::Spotlight::MDQuery('kMDItemTitle == "*Battlestar*"c');
+  my $item = Mac::Spotlight::MDItem->new("/Users/miyagawa/Pictures/Hawaii.jpg");
+  print $item->get(kMDItemKind), "\n"; # JPEG image
+
+  use Mac::Spotlight::MDQuery ':constants';
+
+  my $mdq = new Mac::Spotlight::MDQuery('kMDItemTitle == "*Battlestar*"c');
   $mdq->setScope(kMDQueryScopeComputer);
 
   $mdq->execute();
   $mdq->stop();
 
-  @results = $mdq->getResults();
-  foreach $r (@results) {
+  my @results = $mdq->getResults();
+  for my $r (@results) {
     print $r->get(kMDItemTitle), "\n";
     print $r->get(kMDItemKind), "\n";
 
-    $listref = $r->get(kMDItemAuthors);
+    my $listref = $r->get(kMDItemAuthors);
     foreach $a (@$listref) {
       print "$a\n";
     }
