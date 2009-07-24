@@ -41,9 +41,9 @@ MDQueryRef
 _new(queryString)
     char*    queryString
 CODE:
-    RETVAL = (MDQueryRef)MDQueryCreate(kCFAllocatorDefault, CFStringCreateWithCString(kCFAllocatorDefault, 
-       queryString, CFStringGetSystemEncoding()),
-                                       NULL, NULL);
+    CFStringRef query = CFStringCreateWithCString(kCFAllocatorDefault, queryString, CFStringGetSystemEncoding());
+    RETVAL = (MDQueryRef)MDQueryCreate(kCFAllocatorDefault, query, NULL, NULL);
+    CFRelease(query);
     if (RETVAL == NULL)
         RETVAL = nil;
 OUTPUT:
