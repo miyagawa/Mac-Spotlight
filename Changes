@@ -1,5 +1,8 @@
 Revision history for Perl extension Mac::Spotlight::MDQuery.
 
+0.04  Thu Jul 23 23:50:39 PDT 2009
+        - Fixed another memory leak in $mditem->get
+
 0.03  Thu Jul 23 23:34:39 PDT 2009
         - Added Mac::Spotlight::MDItem->new($path) to create MDItem directly
         - Fixed memory leaks with CFStringRef

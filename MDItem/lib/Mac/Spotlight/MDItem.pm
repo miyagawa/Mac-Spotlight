@@ -129,7 +129,7 @@ our @EXPORT_OK = ( @{ $EXPORT_TAGS{'constants'} } );
 
 our @EXPORT = qw();
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 require XSLoader;
 XSLoader::load('Mac::Spotlight::MDItem', $VERSION);
