@@ -82,7 +82,8 @@ CODE:
 					  av_len(scopes) + 1, 
                                           NULL);
     MDQuerySetSearchScope(query, scopesList, 0);
-
+    CFRelease(scopesList);
+    free(itemsList);
 
 SV*
 _execute(query)
