@@ -145,6 +145,10 @@ sub get {
     return _get($self->{mdiObj}, $attr);
 }
 
+sub DESTROY {
+    my $self = shift;
+    _destroy($self->{mdiObj});
+}
 
 1;
 __END__

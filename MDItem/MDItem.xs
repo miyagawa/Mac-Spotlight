@@ -41,8 +41,14 @@ _new(path)
 CODE:
     CFStringRef cpath = CFStringCreateWithCString(kCFAllocatorDefault, path, CFStringGetSystemEncoding());
     RETVAL = MDItemCreate(kCFAllocatorDefault, cpath);
+    CFRelease(cpath);
 OUTPUT:
     RETVAL
+
+void
+_destroy(MDItemRef item)
+CODE:
+    CFRelease(item);
 
 =item Common MD keys
 =cut
