@@ -64,7 +64,6 @@ sub getResults {
     return _getResults($_[0]->{_qObj});
 }
 
-
 sub DESTROY {
     _destroy($_[0]->{_qObj}) if defined $_[0]->{_qObj};
     undef $_[0]->{_scope};

@@ -1,4 +1,6 @@
-use Test::More tests => 3;
+use strict;
+use warnings;
+use Test::More 'no_plan';
 
 use Mac::Spotlight::MDQuery ':constants';
 use Mac::Spotlight::MDItem ':constants';
@@ -12,5 +14,3 @@ $query->stop;
 my @results = $query->getResults;
 ok @results > 0;
 like $results[0]->get(kMDItemPath), qr/text/i;
-
-
