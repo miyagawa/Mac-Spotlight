@@ -1546,11 +1546,12 @@ CODE:
     tmp = hv_fetch(MY_CXT.jumptable, tmpptr, strlen(tmpptr), FALSE);
     callback_ptr = SvIV(*tmp);
     attrVal = MDItemCopyAttribute(item, attr);
-    if (attrVal == NULL)
+    if (attrVal == NULL) {
         RETVAL = newSV(0);
-    else
+    } else {
         RETVAL = (*callback_ptr)(attrVal);
-    CFRelease(attrVal);
+        CFRelease(attrVal);
+    }
 OUTPUT:
     RETVAL
 
