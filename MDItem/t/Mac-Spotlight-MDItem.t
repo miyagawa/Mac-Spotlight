@@ -1,15 +1,19 @@
-# Before `make install' is performed this script should be runnable with
-# `make test'. After `make install' it should work as `perl Mac-Spotlight-MDItem.t'
+use Test::More tests => 6;
+use Mac::Spotlight::MDItem ':constants';
 
-#########################
+{
+    my $item = Mac::Spotlight::MDItem->new("MDItem.c");
+    ok defined $item;
+    like $item->get(kMDItemPath), qr/MDItem.c/;
+    like $item->get(kMDItemKind), qr/C Source File/;
+    is $item->get(kMDItemIdentifier), undef;
+    ok 1;
+}
 
-# change 'tests => 1' to 'tests => last_test_to_print';
+{
+    my $item = Mac::Spotlight::MDItem->new("not existent");
+    is $item, undef;
+}
 
-use Test::More tests => 1;
-BEGIN { use_ok('Mac::Spotlight::MDItem') };
 
-#########################
-
-# Insert your test code below, the Test::More module is use()ed here so read
-# its man page ( perldoc Test::More ) for help writing this test script.
 

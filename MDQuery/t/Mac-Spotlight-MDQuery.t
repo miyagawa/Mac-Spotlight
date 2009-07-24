@@ -1,15 +1,16 @@
-# Before `make install' is performed this script should be runnable with
-# `make test'. After `make install' it should work as `perl Mac-Spotlight-MDQuery.t'
+use Test::More tests => 3;
 
-#########################
+use Mac::Spotlight::MDQuery ':constants';
+use Mac::Spotlight::MDItem ':constants';
 
-# change 'tests => 1' to 'tests => last_test_to_print';
+my $query = Mac::Spotlight::MDQuery->new(q/((_kMDItemGroupId = 8) && (true)) && ((kMDItemDisplayName = "text*"cdw))/);
+$query->setScope(kMDQueryScopeComputer);
+ok defined $query;
+$query->execute;
+$query->stop;
 
-use Test::More tests => 1;
-BEGIN { use_ok('Mac::Spotlight::MDQuery') };
+my @results = $query->getResults;
+ok @results > 0;
+like $results[0]->get(kMDItemPath), qr/text/i;
 
-#########################
-
-# Insert your test code below, the Test::More module is use()ed here so read
-# its man page ( perldoc Test::More ) for help writing this test script.
 
